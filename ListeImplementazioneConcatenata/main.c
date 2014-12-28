@@ -13,7 +13,7 @@
 #define ERRORMESSAGE_MAXLEN 100
 
 void assertSize(int code, LLElement * first, int expectedSize);
-void assertKey(int code, LLElement * first, int expectedKey, int position);
+void assertKey(int code, LLElement * first, int position, int expectedKey);
 void assertPosition(int code, LLElement * first, int key, int startPosition, int expectedPosition);
 void printAndExit(int code, char message[]);
 
