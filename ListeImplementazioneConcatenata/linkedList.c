@@ -6,8 +6,14 @@
  * Returns the updated pointer to the first element of the list.
  */
 LLElement * LLInsertAtBeginning(LLElement * first, int key) {
-    // TODO To be implemented
-    return NULL;
+    LLElement * new;
+    new = (LLElement *)malloc(sizeof(LLElement));
+    if(new != NULL) {
+        new->next = first;
+        new->key = key;
+        first = new;
+    }
+    return first;
 }
 
 /*
@@ -15,8 +21,18 @@ LLElement * LLInsertAtBeginning(LLElement * first, int key) {
  * Returns the updated pointer to the first element of the list.
  */
 LLElement * LLInsertAtEnd(LLElement * first, int key) {
-    // TODO To be implemented
-    return NULL;
+    LLElement * new;
+    LLElement ** temp;
+    new = (LLElement *)malloc(sizeof(LLElement));
+    if(new != NULL) {
+        temp = &first;
+        while(*temp != NULL)
+            temp = &((*temp)->next);
+        new->next = NULL;
+        new->key = key;
+        *temp = new;
+    }
+    return first;
 }
 
 /*
@@ -27,24 +43,42 @@ LLElement * LLInsertAtEnd(LLElement * first, int key) {
  * Returns the updated pointer to the first element of the list.
  */
 LLElement * LLInsertAtPosition(LLElement * first, int key, int position) {
-    // TODO To be implemented
-    return NULL;
+    LLElement * new;
+    LLElement ** temp;
+    int i;
+    new = (LLElement *)malloc(sizeof(LLElement));
+    if(new != NULL) {
+        temp = &first;
+        for(i=0; i<position; i++)
+            temp = &((*temp)->next);
+        new->next = *temp;
+        new->key = key;
+        *temp = new;
+    }
+    return first;
 }
 
 /*
  * Returns the size of the list.
  */
 int LLSize(LLElement * first) {
-    // TODO To be implemented
-    return 0;
+    int r = 0;
+    while(first != NULL) {
+        r++;
+        first = first->next;
+    }
+    return r;
 }   
 
 /*
  * Returns the key at the specified position.
  */ 
 int LLGetKey(LLElement * first, int position) {
-    // TODO To be implemented
-    return 0;
+    int i;
+    for(i=0; i<position; i++) {
+        first = first->next;
+    }
+    return first->key;
 }
 
 /*
@@ -53,8 +87,18 @@ int LLGetKey(LLElement * first, int position) {
  * Returns -1 if not found. 
  */ 
 int LLFindKey(LLElement * first, int key, int startPosition) {
-    // TODO To be implemented
-    return -1;
+    int r = -1;
+    int i;
+    for(i=0; i<startPosition; i++) {
+        first = first->next;
+    }
+    while(first != NULL && r == -1) {
+        if(first->key == key) {
+            r = i;
+        }
+        i++;
+    }
+    return r;
 }
 
 /*
@@ -62,8 +106,13 @@ int LLFindKey(LLElement * first, int key, int startPosition) {
  * Returns the updated pointer to the first element of the list.
  */
 LLElement * LLRemoveFirst(LLElement * first) {
-    // TODO To be implemented
-    return NULL;
+    LLElement * temp;
+    if(first != NULL) {
+        temp = first;
+        first = first->next;
+        free(temp);
+    }
+    return first;
 }
 
 /*
@@ -71,8 +120,28 @@ LLElement * LLRemoveFirst(LLElement * first) {
  * Returns the updated pointer to the first element of the list.
  */
 LLElement * LLRemoveLast(LLElement * first) {
-    // TODO To be implemented
-    return NULL;
+    LLElement *current;
+    LLElement *previous;
+    // TODO
+    if(first != NULL) {
+        if(first->next == NULL) {
+            // The list contains only one element
+            free(first);
+            first = NULL;
+        }
+        else {
+            // The list contains more than one element
+            previous = first;
+            current = previous->next;
+            while(current->next != NULL) {
+                previous = current;
+                current = previous->next;
+            }
+            previous->next = NULL;
+            free(current);
+        }
+    }
+    return first;
 }
 
 /*
@@ -83,8 +152,21 @@ LLElement * LLRemoveLast(LLElement * first) {
  * Returns the updated pointer to the first element of the list.
  */
 LLElement * LLRemoveAtPosition(LLElement * first, int position) {
-    // TODO To be implemented
-    return NULL;
+    LLElement ** temp;
+    LLElement * pDelete;
+    int i;
+    
+    temp = &first;
+    for(i=0; i<position; i++)
+        temp = &((*temp)->next);
+    
+    pDelete = *temp;
+    if((*temp)->next != NULL) {
+        *temp = (*temp)->next;
+    }
+    free(pDelete);
+    
+    return first;
 }
 
 
