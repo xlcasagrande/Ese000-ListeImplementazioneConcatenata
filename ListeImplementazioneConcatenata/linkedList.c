@@ -96,6 +96,7 @@ int LLFindKey(LLElement * first, int key, int startPosition) {
         if(first->key == key) {
             r = i;
         }
+        first = first->next;
         i++;
     }
     return r;
