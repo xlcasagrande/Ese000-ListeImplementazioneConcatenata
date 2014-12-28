@@ -97,7 +97,7 @@ int main(int argc, char** argv) {
     
     // Operazioni 100
     for(i=0; i<10; i++)
-        list = LLInsertAtEnd(10+i);
+        list = LLInsertAtEnd(list, 10+i);
     assertSize(100, list, 10);
     for(i=0; i<10; i++)
         assertKey(101, list, i, 10+i);
