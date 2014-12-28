@@ -100,7 +100,7 @@ void assertSize(int code, LLElement * first, int expectedSize) {
 }
 
 
-void assertKey(int code, LLElement * first, int expectedKey, int position) {
+void assertKey(int code, LLElement * first, int position, int expectedKey) {
     int currentKey;    
     char message[ERRORMESSAGE_MAXLEN];
     currentKey = LLGetKey(first, position);
