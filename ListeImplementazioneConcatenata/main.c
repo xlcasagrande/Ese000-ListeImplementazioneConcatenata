@@ -13,7 +13,7 @@
 #define ERRORMESSAGE_MAXLEN 100
 
 void assertSize(int code, LLElement * first, int expectedSize);
-void assertKey(int code, LLElement * first, int expectedKey, int position);
+void assertKey(int code, LLElement * first, int position, int expectedKey);
 void assertPosition(int code, LLElement * first, int key, int startPosition, int expectedPosition);
 void printAndExit(int code, char message[]);
 
@@ -73,7 +73,7 @@ int main(int argc, char** argv) {
     }
     
     // Operazioni 70
-    list = LLInsertAtPosition(list, 3, 10000);
+    list = LLInsertAtPosition(list, 10000, 3);
     
     assertSize(70, list, 6);
     assertKey(71, list, 3, 10000);
@@ -96,11 +96,13 @@ void assertSize(int code, LLElement * first, int expectedSize) {
         sprintf(message, "Dimensione attesa: %d - Dimensione corrente: %d\n", expectedSize, currentSize);
         printAndExit(code, message);
     }
+    else
+        printf("Assezione %d verificata\n", code);
     return;
 }
 
 
-void assertKey(int code, LLElement * first, int expectedKey, int position) {
+void assertKey(int code, LLElement * first, int position, int expectedKey) {
     int currentKey;    
     char message[ERRORMESSAGE_MAXLEN];
     currentKey = LLGetKey(first, position);
@@ -108,6 +110,9 @@ void assertKey(int code, LLElement * first, int expectedKey, int position) {
         sprintf(message, "Posizione %d. Valore atteso: %d - Valore corrente: %d\n", position, expectedKey, currentKey);
         printAndExit(code, message);
     }
+    else
+        printf("Assezione %d verificata\n", code);
+    return;
 }
 
 void assertPosition(int code, LLElement * first, int key, int startPosition, int expectedPosition) {
@@ -122,6 +127,9 @@ void assertPosition(int code, LLElement * first, int key, int startPosition, int
                 currentPosition);
         printAndExit(code, message);
     }
+    else
+        printf("Assezione %d verificata\n", code);
+    return;
 }
 
 
