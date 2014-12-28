@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "linkedList.h"
+#include ".\linkedList.h"
 
 /*
  * Inserts the new key at the beginning of the list.
@@ -42,9 +42,19 @@ int LLSize(LLElement * first) {
 /*
  * Returns the key at the specified position.
  */ 
-int * LLGetKey(LLElement * first, int position) {
+int LLGetKey(LLElement * first, int position) {
     // TODO To be implemented
     return 0;
+}
+
+/*
+ * Returns the position of the first element, starting from startPosition, that
+ * has the specified key.
+ * Returns -1 if not found. 
+ */ 
+int LLFindKey(LLElement * first, int key, int startPosition) {
+    // TODO To be implemented
+    return -1;
 }
 
 /*

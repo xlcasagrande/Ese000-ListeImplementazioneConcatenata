@@ -38,7 +38,14 @@ int LLSize(LLElement * first);
 /*
  * Returns the key at the specified position.
  */ 
-int * LLGetKey(LLElement * first, int position);
+int LLGetKey(LLElement * first, int position);
+
+/*
+ * Returns the position of the first element, starting from startPosition, that
+ * has the specified key.
+ * Returns -1 if not found. 
+ */ 
+int LLFindKey(LLElement * first, int key, int startPosition);
 
 /*
  * Remove the first element of the list.
