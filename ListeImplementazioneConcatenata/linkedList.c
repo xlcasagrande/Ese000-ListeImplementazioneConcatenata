@@ -121,26 +121,14 @@ LLElement * LLRemoveFirst(LLElement * first) {
  * Returns the updated pointer to the first element of the list.
  */
 LLElement * LLRemoveLast(LLElement * first) {
-    LLElement *current;
-    LLElement *previous;
-    // TODO
+    LLElement **temp;
     if(first != NULL) {
-        if(first->next == NULL) {
-            // The list contains only one element
-            free(first);
-            first = NULL;
-        }
-        else {
-            // The list contains more than one element
-            previous = first;
-            current = previous->next;
-            while(current->next != NULL) {
-                previous = current;
-                current = previous->next;
+        temp = &first;
+        while((*temp)->next != NULL) {
+                temp = &((*temp)->next);
             }
-            previous->next = NULL;
-            free(current);
-        }
+        free(*temp);
+        *temp = NULL;
     }
     return first;
 }
